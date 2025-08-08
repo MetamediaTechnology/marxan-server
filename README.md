@@ -109,3 +109,10 @@ docker run -it --rm -p 8080:8080 marxanserver
 ```
 Wait for it to start then go to:
 http://localhost:8080/marxan-server/testTornado
+
+# Using Docker Compose 
+
+Run the following commands:
+ - docker compose build
+ - docker compose up db -d # and wait for a while until the DB is up
+ - docker compose up -d # bring up all the service

@@ -1,0 +1,26 @@
+services:
+  marxan-server:
+    build: .
+    platform: linux/amd64
+    ports:
+      - "8080:80"
+    depends_on: 
+      - db
+  db:
+    image: postgis/postgis:10-3.2
+    platform: linux/amd64
+    environment:
+      POSTGRES_USER: jrc
+      POSTGRES_PASSWORD: thargal88
+      POSTGRES_DB: marxan
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # The init.sh script will be executed on startup and will restore the database
+      # from the dump.backup file.
+      - ./init.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.backup
+
+volumes:
+  postgres_data:
