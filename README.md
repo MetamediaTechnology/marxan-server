@@ -112,7 +112,11 @@ http://localhost:8080/marxan-server/testTornado
 
 # Using Docker Compose 
 
-Run the following commands:
+This docker compose will run the server and client containers together on localhost.
+
+You need to do "docker compose build" of the client first: https://github.com/MetamediaTechnology/marxan-client.
+
+Then run the following commands:
  - docker compose build
  - docker compose up db -d # and wait for a while until the DB is up
  - docker compose up -d # bring up all the service
